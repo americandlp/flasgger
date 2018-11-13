@@ -178,7 +178,7 @@ class Swagger(object):
         if app:
             self.init_app(app)
 
-    def init_app(self, app, decorators=None):
+    def init_app(self, app, template, decorators=None):
         """
         Initialize the app with Swagger plugin
         """
@@ -187,8 +187,7 @@ class Swagger(object):
 
         self.load_config(app)
         # self.load_apispec(app)
-        if self.template_file is not None:
-            self.template = self.load_swagger_file(self.template_file)
+        self.template = template
         self.register_views(app)
         self.add_headers(app)
 
